@@ -76,4 +76,23 @@ result = day === 'суббота' || day === 'воскресенье'
 console.log(result);
 
 // switch
-
+let ticketNumber = "222222";
+switch (ticketNumber) { // проверяет на срогое равентсво (===) выражение в ()
+    // и выражения, которые находятся в case. Выполняет блоки кода от первого
+    // совпадения до первого break или конца конструкции switch
+    case "111111":
+        result = 'загородный дом';
+        break;
+    case "222222": // объединение case
+    case "333333":
+        result = "земельный участок";
+        break;
+    case "444444": // объединение case
+    case "555555":
+    case "666666":
+        result = "книга о строительстве дома";
+        break;
+    default:
+        result = "приза нет";
+}
+console.log(`Результат: ${result}`); // console.log("Результат:" + result);

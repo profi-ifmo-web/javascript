@@ -54,3 +54,38 @@ let a = false, b = 12, c = null, d = "", e = " ", f;
 console.log(!a, !b, !c, !d, !e, !f, !NaN);
 /* !a - true, !b - false, !c - true,
  !d - true, !e - false, !f - true, !NaN - true */
+
+// инкремент / декремент
+// инкремент (++) - увеличение значения переменной на 1
+// префиксная форма ++i
+someNum = 2;
+console.log(++someNum); // 3 сначала увеличивает, потом возвращает результат
+console.log(someNum); // 3
+
+// постфиксная форма i++
+someNum = 2;
+console.log(someNum++); // 2 сначала возвращает значение переменной, потом
+// увеличивает
+console.log(someNum); // 3
+
+// декремент(--) - уменьшение значения переменной на 1
+// префиксная форма --i
+someNum = 2;
+console.log(--someNum); // сначала уменьшает, потом возвращает результат
+console.log(someNum); //
+
+// постфиксная форма i--
+someNum = 2;
+console.log(someNum--); //  сначала возвращает значение переменной, потом
+// уменьшает
+console.log(someNum); //
+
+let num = 7;
+let result = num++ - num++ + num++ - --num;
+// 7 - 8 + 9 - 9
+console.log(result); // -1
+
+
+
+
+
