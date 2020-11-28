@@ -1,13 +1,14 @@
 'use strict';
 // DOM - Document Object Model - объектная модель документа.
 // Согласно этой модели каждый html элемент является объектом.
-// Элементы, которые расположены радом - соседние элементы.
+// Элементы, которые расположены рядом - соседние элементы.
 // Вложенные элементы являются дочерними элементы своих родителей.
 
-console.log(document); // весь HTML документ
+console.log(document); // весь HTML документ, объект используется для поиска и добавления элементов
 console.log(document.body); // body
 
 let list = document.getElementById("list"); //  получение объектов по id
+console.log(list);
 
 // перемещение по DOM дереву
 console.log(list.childNodes); // все дочерние узлы
@@ -34,26 +35,29 @@ console.log(list.parentNode); // родительский узел
 console.log(list.parentElement); // родительский узел-тег
 
 // поиск элементов в DOM дереве
-// 1. по id
+// 1. по значения атрибута id
 list = document.getElementById("list");
-// 2. по значению атрибута name
+// 2. по значению атрибута name, возвращает коллекцию, даже если элемент один
 let elemsByName = document.getElementsByName("data");
 console.log(elemsByName);
-// 3. по имени тега
+// 3. по имени тега, возвращает коллекцию, даже если элемент один
 let elemsByTag = document.getElementsByTagName("li");
 console.log(elemsByTag);
-// 4. по имени css класса
+// 4. по имени css класса, возвращает коллекцию, даже если элемент один
 let elemsByClassName = document.getElementsByClassName("orange-border");
 console.log(elemsByClassName);
 // 5. по css селектору
-let elemByCSS = document.querySelector("ul>li");
+// первый элемент, который удовлетворяет селектору ul>li
+let elemByCSS = document.querySelector("ul>li"); // .orange-border
 console.log(elemByCSS);
+// коллекция элементов, которые удовлетворяют селектору input[type=text]
 let elemsByCSS = document.querySelectorAll("input[type=text]");
 console.log(elemsByCSS);
 
 // создание элементов
 let div = document.createElement("div"); // элемент создан, но в html его пока нет
 // <div></div>
+// работа с атрибутами
 // работа с атрибутами
 div.setAttribute("id", "container"); // установили атрибут id со значением container для созданного элемента
 // <div id="container"></div>
@@ -63,13 +67,15 @@ div.removeAttribute("id"); // удаление атрибута
 
 // атрибут style
 // cssText позволяет добавить несколько css свойств в атрибут style
+// <div style=""></div>
 div.style.cssText = ` 
     text-align: center;
     font-size: 1.7rem;
 `;
 
 div.style.background = "#FBE9E7";
-console.log(div.style.background); // yellow
+div.style.fontWeight = "bold"; // font-weight
+console.log(div.style.background); // #FBE9E7
 
 // получить все стили элемента
 let listStyles = getComputedStyle(list);
@@ -77,9 +83,9 @@ console.log(listStyles);
 console.log(listStyles.background);
 console.log(listStyles.marginTop);
 
-// работа с классами
+// работа с css классами
 div.classList.add("orange-border");
-// <div class="class-name"></div>
+// <div class="orange-border"></div>
 div.classList.remove("orange-border");
 // <div></div>
 div.classList.toggle("orange-border"); // добавить / удалить
@@ -96,13 +102,13 @@ div.classList.contains("orange-border"); // проверка наличия
 // elem.clone() копирование
 
 for (let i = 0; i < 5; i++) {
-    let p = document.createElement("p"); // создали элемент p
+    let pElem = document.createElement("p"); // создали элемент p
     // p.textContent доступ к тексту за вычетом всех тегов
-    console.log(p.textContent);
+    console.log(pElem.textContent);
     // p.textContent = `Текстовый абзац ${i}`; // добавили текст
-    p.innerText = `Текстовый абзац ${i + 1}`;
-    p.classList.add("p-class"); // добавили класс
-    div.append(p); // элемент p добавили в элемент div, который был создан ранее
+    pElem.innerText = `Текстовый абзац ${i + 1}`;
+    pElem.classList.add("p-class"); // добавили класс
+    div.append(pElem); // элемент p добавили в элемент div, который был создан ранее
 }
 
 document.body.prepend(div); // элемент div , который был создан ранее добавили первым в body
@@ -124,5 +130,7 @@ let cell2 = row.insertCell(1);
 
 cell1.innerText = "Содержимое ячейки 1";
 cell2.innerText = "Содержимое ячейки 2";
+
+console.log(cell1.innerText);
 
 tableArea.append(table);

@@ -115,6 +115,17 @@ for (let propName in phpBook) {
     console.log(propName, phpBook[propName]);
 }
 
+let info = {
+    "additional_info":
+        {"vaccinations": false, "passport": false}
+};
+
+for (let propName in info) {
+    for (let prop2Name in info[propName]){
+        console.log(prop2Name, info[propName][prop2Name]);
+    }
+}
+
 // удаление свойства из объекта
 delete userData.login;
 console.log(userData.login);
