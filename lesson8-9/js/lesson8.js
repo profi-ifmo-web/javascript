@@ -35,6 +35,7 @@ function getGoods() {
     };
 }
 
+// ГЕНЕРАЦИЯ КАРТОЧЕК ТОВАРОВ
 function generateCards(cardsElem) {
     // cardsElem - элемент, в который будут добавлены
     let goods = getGoods();
@@ -58,7 +59,7 @@ function generateCards(cardsElem) {
 
 generateCards(document.querySelector(".goods"));
 
-
+// ГЕНЕРАЦИЯ КАРТОЧЕК КНИГ
 function getBooks() {
     return [
         {author: 'Пушкин', title: 'Пир во время чумы', pageCount: 5, count: 12},
@@ -76,24 +77,21 @@ function generateBooksCard(sectionForBooks) {
     for (let book of books) {
         if (book.count <= 0) continue; // переход на следующую итерацию
         let card = document.createElement("div");
+        card.style.border = '1px solid #333';
+
         let title = document.createElement("p");
-        title.innerText = book.title;
+        title.innerText = `Название: ${book.title}`;
+
         let info = document.createElement("div");
         let author = document.createElement("span");
-        author.innerText = book.author;
+        author.innerText = `автор: ${book.author}, `;
         let pages = document.createElement("span");
-        pages.innerText = book.pageCount;
+        pages.innerText =`количество страниц: ${book.pageCount} `;
         info.append(author, pages);
+
         card.append(title, info);
         sectionForBooks.append(card);
     }
 }
 generateBooksCard(document.getElementById("books"));
-// генерировать только, если count > 0
 
-
-// ИМЯ КОШКИ | возраст
-// картинка       Дополнительная информация:
-//                Цвет:  цвет кошки
-//                Документы: да / нет
-//                Прививик: да / нет
