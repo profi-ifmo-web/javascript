@@ -83,3 +83,4 @@ function sixHandler(arg, event) {
     // удаление
     sixElem.onclick = null;
 }
+
