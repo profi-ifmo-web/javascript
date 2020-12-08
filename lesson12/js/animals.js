@@ -11,9 +11,10 @@ let cat = {
 };
 
 let mouse = {
-   name: "Jerry",
-   speed: 25,
+    name: "Jerry",
+    speed: 25,
     runFromCat(){ console.log(`${this.name} убежал`); }
 };
+
 
 export {cat, mouse};
