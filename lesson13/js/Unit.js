@@ -51,13 +51,24 @@ class Unit{
     }
 }
 
+class Knight extends Unit {
+    constructor(name, addAttack){ // constructor(addAttack)
+        // вызов конструктора родителя, в котором происходит
+        // установка значения свойства name
+        super(name); // super('Рыцарь');
+        this._additionalAttack = addAttack;
+    }
+    // переопределение метода родителя:
+    attackOther(otherUnit){
+        // 1. полностью изменить реализацию метода
+        // 2. расширить функционал:
+        // super.attackOther(otherUnit);
+        // дополнительный функционал
+        super.attackOther(otherUnit);
+        if (!otherUnit.isAlive()) {
+            this._attack += this._additionalAttack;
+        }
+    }
+}
 
-let knight = new Unit('Рыцарь');
-knight.attack = 7;
-knight.health = 18;
-let infantry = new Unit('Пехотинец');
-infantry.attack = 10;
-infantry.health = 10;
-
-knight.attackOther(infantry);
-infantry.attackOther(knight);
+export {Unit, Knight};
