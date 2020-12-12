@@ -1,0 +1,19 @@
+.jquery {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#animation {
+    display: flex;
+    flex-direction: column;
+    background: orange;
+    height: 400px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+#change {
+    overflow: hidden;
+    height: 300px;
+}
